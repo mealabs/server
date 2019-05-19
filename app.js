@@ -1,10 +1,23 @@
-var express = require('express');
-var bodyparser = require('body-parser');
+const express = require('express');
+const app = express();
+const path = require('path');
+const ngrok = require('ngrok');
+const user = "user"
+const password = "password"
 
-var app = express();
-
-app.get('/', function(req, res){
-    res.send('hello world');
+app.get('/', (req, res) => {
+    res.send("Data: 1");
 });
 
-app.listen(8000);
+const server = app.listen(80, () => {
+    console.log('Express listening at ', server.address().port);
+})
+
+ngrok.connect({
+    proto : 'http',
+    addr : 80,
+    auth : `${user}:${password}`
+}, (err, url) => {
+    console.log('Tunnel Created -> ', url);
+    console.log('Tunnel Inspector ->  http://127.0.0.1:4040');
+});
