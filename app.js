@@ -2,16 +2,31 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const ngrok = require('ngrok');
-const user = "user"
-const password = "password"
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const user = "user";
+const password = "password";
+
+temp_humid = {
+    "Temperature": "",
+    "Humidity": ""
+};
 
 app.get('/', (req, res) => {
-    res.send("Data: 1");
+    res.send(temp_humid);
+});
+
+app.post('/', (req, res) => {
+    console.log(req.body);
+    temp_humid = req.body
+    res.send(temp_humid);
 });
 
 const server = app.listen(80, () => {
     console.log('Express listening at ', server.address().port);
-})
+});
 
 ngrok.connect({
     proto : 'http',
