@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const fs = require('fs')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'))
 
 const user = "user";
 const password = "password";
