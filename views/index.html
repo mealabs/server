@@ -10,7 +10,7 @@
         <h1>MEALABS</h1>
         <div>
             <h2>Temperature/Humidty Sensor:</h2>
-            <p id="sensor_data">{"Temperature": "","Humidity": ""};</p>
+            <p id="sensor_data">{"Temperature":"21*C","Humidity":"20%"}</p>
         </div>
         <button onclick="Refresh()">Refresh</button>
 
@@ -26,6 +26,12 @@
                 xhttp.setRequestHeader("Content-type", "application/json")
                 xhttp.send('{"Temperature":"Humidity"}');
             }
+            </script>
+            <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Refresh()
+                });
             </script>
     </body>
 </html>

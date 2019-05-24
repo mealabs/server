@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/mealabs/Server/issues"
   },
-  "homepage": "https://github.com/mealabs/Server#readme"
+  "homepage": "https://github.com/mealabs/Server#readme",
+  "nodemonConfig":{
+    "ignore":["data/*"]
+  }
 }

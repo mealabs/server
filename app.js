@@ -3,28 +3,24 @@ const app = express();
 const path = require('path');
 const ngrok = require('ngrok');
 const bodyParser = require("body-parser");
+const fs = require('fs')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const user = "user";
 const password = "password";
 
-temp_humid = {
-    "Temperature": "",
-    "Humidity": ""
-};
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,"/views/index.html"));
 });
 
 app.post('/', (req, res) => {
+    sensor_path = path.join(__dirname, "/data/temperature_humidity_sensor.json")
     if(JSON.stringify(req.body) === '{"Temperature":"Humidity"}'){
-        res.send(temp_humid)
+        res.send(JSON.parse(fs.readFileSync(sensor_path)))
     }else{
-        console.log(req.body);
-        temp_humid = req.body
-        res.send(temp_humid)
+        fs.writeFileSync(sensor_path, JSON.stringify(req.body))
+        res.send("OK")
     }
 });
 
