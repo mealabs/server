@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>MEALABS</title>
+    </head>
+    <body>
+        <h1>MEALABS</h1>
+        <div>
+            <h2>Temperature/Humidty Sensor:</h2>
+            <p id="sensor_data">{"Temperature": "","Humidity": ""};</p>
+        </div>
+        <button onclick="Refresh()">Refresh</button>
+
+        <script>
+            function Refresh() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("sensor_data").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("POST", "http://localhost:80/", true);
+                xhttp.setRequestHeader("Content-type", "application/json")
+                xhttp.send('{"Temperature":"Humidity"}');
+            }
+            </script>
+    </body>
+</html>

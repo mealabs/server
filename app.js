@@ -15,13 +15,17 @@ temp_humid = {
 };
 
 app.get('/', (req, res) => {
-    res.send(temp_humid);
+    res.sendFile(path.join(__dirname,"/views/index.html"));
 });
 
 app.post('/', (req, res) => {
-    console.log(req.body);
-    temp_humid = req.body
-    res.send(temp_humid);
+    if(JSON.stringify(req.body) === '{"Temperature":"Humidity"}'){
+        res.send(temp_humid)
+    }else{
+        console.log(req.body);
+        temp_humid = req.body
+        res.send(temp_humid)
+    }
 });
 
 const server = app.listen(80, () => {
