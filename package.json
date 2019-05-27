@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "express.js": "^1.0.0",
@@ -23,7 +24,9 @@
     "url": "https://github.com/mealabs/Server/issues"
   },
   "homepage": "https://github.com/mealabs/Server#readme",
-  "nodemonConfig":{
-    "ignore":["data/*"]
+  "nodemonConfig": {
+    "ignore": [
+      "data/*"
+    ]
   }
 }

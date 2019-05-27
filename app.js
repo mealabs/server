@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const app = express();
 const path = require('path');
 const ngrok = require('ngrok');
@@ -7,6 +8,7 @@ const fs = require('fs')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'))
+app.use(cors())
 
 const user = "user";
 const password = "password";
