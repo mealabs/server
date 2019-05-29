@@ -9,7 +9,7 @@ function Refresh() {
         }
     };
 
-    xhttp.open("POST", "http://ff770eb3.ngrok.io/", true);
+    xhttp.open("POST", "http://4cd1a0b4.ngrok.io/", true);
     xhttp.setRequestHeader("Content-type", "application/json")
     xhttp.send('{"Temperature":"Humidity"}');
 }
