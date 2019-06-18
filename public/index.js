@@ -14,7 +14,7 @@ function Refresh() {
         }
     };
 
-    xhttp.open("POST", "http://4cd1a0b4.ngrok.io/", true);
+    xhttp.open("POST", "35.227.123.142/", true);
     xhttp.setRequestHeader("Content-type", "application/json")
     xhttp.send('{"Temperature":"Humidity"}');
 }
